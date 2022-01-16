@@ -1,0 +1,57 @@
+@media only screen and (min-width: 35rem) {
+  body{
+    padding: 1rem;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  
+  ul li a{
+    padding: 1rem 0.5rem;
+    margin: 1rem;
+  }
+
+  #login a{
+    margin-right: 2rem;
+    margin-top: -2rem;
+    text-decoration: none;
+    color: #8d8d8d;
+    font-size: 1.5rem;
+  }
+
+  /*Final section*/
+  .final-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .delorean-upgrades{
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .delorean-reviews{
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .own-button{
+    margin-bottom: 15rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .button-home{
+    grid-column: 1;
+    grid-row: 1;
+    margin: 8rem 70% 0 auto;
+  }
+
+  .button-home img{
+    margin-left: 15%;
+    max-width: 95%;
+  }
+
+  .image-up{
+    max-width: 25%;
+  }
+
+
+}
