@@ -10,6 +10,9 @@
     padding: 1rem 0.5rem;
     margin: 1rem;
   }
+  main{
+    padding: 2rem;
+  }
 
   #login a{
     margin-right: 2rem;
@@ -53,5 +56,6 @@
     max-width: 25%;
   }
 
+  
 
 }
