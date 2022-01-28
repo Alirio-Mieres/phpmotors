@@ -20,4 +20,9 @@
     padding: 1rem 0;
     margin: 0 1rem;
   }
+
+  .login{
+    width: 20rem;
+  }
+
 }

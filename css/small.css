@@ -146,3 +146,48 @@ img.delorean-img{
   justify-content: center;
 }
 
+#login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-member, .sign-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-member{
+  font-size: 1.3rem;
+}
+
+form label.top{
+  display: block;
+  margin-top: 1rem;
+  color: #9c2c13;
+  font-size: .8rem;
+}
+
+form label.top input{
+  -webkit-appearance: none;
+  display: block;
+  font-size: 1rem;
+  border: solid 1px #999;
+  padding:  .7rem;
+  color: #555;
+  width: 100%;
+  max-width: 20rem;
+  background-color:  rgba(0,0,0,0.1);
+}
+
+.sign-button{
+    border: none;
+    background-color: #247BA0;
+    color: white;
+    border-radius: 1rem;
+    padding: .75rem 1rem;
+    margin: 0.8rem 0 2rem 6%;
+    width: 96%;
+    max-width: 20rem;
+}
+
