@@ -21,31 +21,35 @@
 <body>
   <div id="content">
     <header>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';
+        
+      ?>
     </header>
 
     <nav>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; ?>
+    <?php //require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; 
+      echo $navList;
+      ?>
     </nav>
 
     <main>
       <h1>Welcome to PHP Motors!</h1>
       <div class="banner-box">
 
-      <div class="delorean-img">
-        <img src="../phpmotors/images/delorean.jpg" alt="Delorean car images">
-      </div>
+        <div class="delorean-img">
+          <img src="../phpmotors/images/delorean.jpg" alt="Delorean car images">
+        </div>
 
-      <section class="own-button">
-        <h3>DMC Delorean</h3>
-        <p>3 cup holders</p>
-        <p>Superman doors</p>
-        <p>Fuzzy dice !</p>
-      </section>
+        <section class="own-button">
+          <h3>DMC Delorean</h3>
+          <p>3 cup holders</p>
+          <p>Superman doors</p>
+          <p>Fuzzy dice !</p>
+        </section>
 
-      <div class="button-home">
-        <a href="#"><img src="../phpmotors/images/site/own_today.png " alt="Own Today button" ></a>
-      </div>
+        <div class="button-home">
+          <a href="#"><img src="../phpmotors/images/site/own_today.png " alt="Own Today button"></a>
+        </div>
 
       </div>
 

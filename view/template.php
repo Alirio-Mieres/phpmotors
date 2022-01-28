@@ -22,8 +22,10 @@
   </header>
 
   <nav>
-  <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/nav.php'; ?>
-  </nav>
+     <?php //require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; 
+       echo $navList;
+      ?>
+    </nav>
 
   <main>
     <h1>Content Title Here</h1>
