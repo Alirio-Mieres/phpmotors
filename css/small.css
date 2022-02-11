@@ -162,6 +162,7 @@ img.delorean-img{
 }
 
 form label.top{
+  width: 100%;
   display: block;
   margin-top: 1rem;
   color: #9c2c13;
@@ -176,7 +177,24 @@ form label.top input{
   padding:  .7rem;
   color: #555;
   width: 100%;
-  max-width: 20rem;
+  max-width: 18rem;
+  background-color:  rgba(0,0,0,0.1);
+}
+button, input, optgroup, select, textarea {
+  width: 100% !important;
+  display: block;
+  max-width: 18rem;
+  padding:  .7rem;
+  background-color:  rgba(0,0,0,0.1);
+}
+
+select{
+  max-width: 22rem;
+
+}
+
+textarea{
+  height: 100px !important;
   background-color:  rgba(0,0,0,0.1);
 }
 
@@ -188,6 +206,34 @@ form label.top input{
     padding: .75rem 1rem;
     margin: 0.8rem 0 2rem 6%;
     width: 96%;
-    max-width: 20rem;
+    /*max-width: 20rem;*/
+}
+.registration-error{
+  text-align: center;
 }
 
+.center{
+  text-align: center;
+}
+
+.add-class{
+  display: flex;
+  justify-content: center;
+
+}
+
+.header-add-class{
+  text-align: center;
+}
+
+.list-vehicle-man > li{
+  list-style: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.warningMessage{
+  text-align: center;
+  font-size: 1.2rem;
+  color: red;
+}

@@ -30,6 +30,11 @@
 
     <main>
       <h1 class="sign-title">Sign in</h1>
+      <?php 
+      if (isset($message)){
+        echo $message;
+      }
+      ?>
       <div id="login-form">
       <form  class="login">
         <label class="top">Email: <input type="email" name="email" placeholder="email@gmail.com" required autofocus></label>

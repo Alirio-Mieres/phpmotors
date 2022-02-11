@@ -24,7 +24,4 @@ try{
   }
 }
 phpmotorsConnect();
-
-
 ?>
-

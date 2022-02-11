@@ -24,5 +24,7 @@
   .login{
     width: 20rem;
   }
-
+  select{
+    max-width: 20rem;
+  }
 }
