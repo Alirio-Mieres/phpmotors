@@ -30,16 +30,23 @@
 
     <main>
       <h1 class="sign-title">Sign in</h1>
-      <?php 
-      if (isset($message)){
+      <?php
+      if (isset($message)) {
         echo $message;
       }
       ?>
       <div id="login-form">
       <form  class="login">
-        <label class="top">Email: <input type="email" name="email" placeholder="email@gmail.com" required autofocus></label>
-        <label class="top">Password: <input type="password" name="password" required></label>
+        <label class="top">Email: <input type="email" name="email" placeholder="email@gmail.com"  autofocus <?php
+              if(isset($clientEmail)){
+                echo "value='$clientEmail'";
+             }
+              ?> required></label>
+        <label class="top">Password: 
+        <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
+        <input type="password"  name="password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label>
         <input type="submit" value="Sign-in" class="sign-button">
+        <input type="hidden" name="action" value="Login">
         <a href="/phpmotors/accounts/index.php?action=registration" class="not-member">Not a member yet?</a>
       </form>
       </div>

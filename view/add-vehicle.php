@@ -42,7 +42,7 @@
           <?php
           echo $classificationList;
           ?>
-          <label class="top">Make<input type="text" id="invMake" name="invMake"  ></label>
+          <label class="top">Make<input type="text" id="invMake" name="invMake"  required></label>
           <label class="top">Model<input type="text" id="invModel" name="invModel" ></label>
           <label class="top">Description<textarea id="invDescription" name="invDescription" rows="4" cols="40" ></textarea></label>
           <label class="top">Image Path<input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png" ></label>

@@ -20,7 +20,7 @@ $navList .= '</ul>';
 /*echo $navList;
   exit;*/
 
-$classificationList = '<select name="classificationId" selected="selected">';
+$classificationList = '<select name="classificationId">';
 $classificationList .= '<option value="0" selected>Choose Car Classification</option>';
 
 

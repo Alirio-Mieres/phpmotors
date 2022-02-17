@@ -23,28 +23,44 @@
     </header>
 
     <nav>
-     <?php //require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; 
-       echo $navList;
+      <?php //require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; 
+      echo $navList;
       ?>
     </nav>
 
     <main>
       <h1 class="sign-title">Register</h1>
-      <?php 
-      if (isset($message)){
+      <?php
+      if (isset($message)) {
         echo $message;
       }
       ?>
       <div id="login-form">
 
-      <form class="login" action="/phpmotors/accounts/index.php" method="post">
-        <label class="top">First Name: <input type="text" name="clientFirstname" id="clientFirstname"  autofocus></label>
-        <label class="top">Last Name: <input type="text" name="clientLastname" id="clientLastname" ></label>
-        <label class="top">Email: <input type="email" name="clientEmail" id="clientEmail" placeholder="email@gmail.com" ></label>
-        <label class="top">Password: <input type="password" name="clientPassword" ></label>
-        <input type="submit" name="submit" value="Register" class="sign-button">
-        <input type="hidden" name="action" value="register">
-      </form>
+        <form class="login" action="/phpmotors/accounts/index.php" method="post">
+          <label class="top">First Name: <input type="text" name="clientFirstname" id="clientFirstname" autofocus <?php
+              if (isset($clientFirstname)) {
+                  echo "value='$clientFirstname'";
+              } ?> required></label>
+
+          <label class="top">Last Name: <input type="text" name="clientLastname" id="clientLastname" required <?php
+              if (isset($clientLastname)) {
+                  echo "value='$clientLastname'";
+                } ?>></label>
+
+          <label class="top">Email: <input type="email" name="clientEmail" id="clientEmail" placeholder="email@gmail.com"  <?php
+              if(isset($clientEmail)){
+                echo "value='$clientEmail'";
+             }
+              ?> required></label>
+
+          <label class="top">Password:
+            <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+            <input type="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name="clientPassword" required></label>
+
+          <input type="submit" name="submit" value="Register" class="sign-button">
+          <input type="hidden" name="action" value="register">
+        </form>
       </div>
     </main>
 

@@ -240,3 +240,15 @@ textarea{
 .success{
   text-align: center;
 }
+
+.top > span {
+
+  color: #3a3a3a;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+main > p {
+  text-align: center;
+  
+}
