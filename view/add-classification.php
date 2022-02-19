@@ -38,7 +38,8 @@
       
       <div class="add-class">
         <form action="/phpmotors/vehicles/index.php" method="post">
-          <label class="top">Classification Name: <input type="text" name="classificationName" id="classificationName"  autofocus></label>
+          <label class="top">Classification Name: <input type="text" name="classificationName" id="classificationName" autofocus required pattern=".{0,30}" title="Limited to 30 characters" <?php
+           if(isset($classificationName)){echo "value='$classificationName'";}?>></label> 
           <input type="submit" name="submit" value="Add Classification" class="sign-button">
           <input type="hidden" name="action" value="add-classification-page">  
         </form>

@@ -2,6 +2,7 @@
 //This is the main controller
  require_once 'library/connections.php';
  require_once 'model/main-model.php';
+ require_once 'library/functions.php';
 
 
  $classifications = getClassifications();
@@ -9,12 +10,7 @@
  /*var_dump($classifications);
 	exit;*/
 
-  $navList = '<ul class="nav">';
-  $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-  foreach ($classifications as $classification) {
-   $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-  }
-  $navList .= '</ul>';
+  $navList = navList($classifications);
   /*echo $navList;
   exit;*/
   $action = filter_input(INPUT_POST, 'action');

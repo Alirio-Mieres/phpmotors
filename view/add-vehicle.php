@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+$classificationList = '<select name="classificationId" required>';
+$classificationList .= '<option value="" selected>Choose Car Classification</option>';
+
+foreach ($classifications as $classification) {
+  $classificationList .= "<option value='$classification[classificationId]'";
+  if(isset($classificationId)){
+    if($classification['classificationId'] === $classificationId){
+      $classificationList .= ' selected ';
+    }
+  }
+ 
+  $classificationList .= ">$classification[classificationName]</option>";
+}
+$classificationList .= '</select>';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,14 +57,29 @@
           <?php
           echo $classificationList;
           ?>
-          <label class="top">Make<input type="text" id="invMake" name="invMake"  required></label>
-          <label class="top">Model<input type="text" id="invModel" name="invModel" ></label>
-          <label class="top">Description<textarea id="invDescription" name="invDescription" rows="4" cols="40" ></textarea></label>
-          <label class="top">Image Path<input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png" ></label>
-          <label class="top">Thumbnail Path<input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image.png" ></label>
-          <label class="top">Price<input type="number" id="invPrice" name="invPrice" ></label>
-          <label class="top"># In Stock<input type="number" id="invStock" name="invStock" ></label>
-          <label class="top">Color<input type="text" id="invColor" name="invColor" ></label>
+          <label class="top">Make<input type="text" id="invMake" name="invMake"<?php 
+            if(isset($invMake)){echo "value='$invMake'";} ?>  required></label>
+
+          <label class="top">Model<input type="text" id="invModel" name="invModel" <?php 
+            if(isset($invMake)){echo "value='$invModel'";} ?>  required></label>
+
+          <label class="top">Description<textarea id="invDescription" name="invDescription" rows="4" cols="40" required><?php if(isset($invMake)){echo $invDescription;}?></textarea></label>
+
+          <label class="top">Image Path<input type="text" id="invImage" name="invImage" placeholder="/phpmotors/images/no-image.png" <?php 
+            if(isset($invMake)){echo "value='$invImage'";} ?> required></label>
+
+          <label class="top">Thumbnail Path<input type="text" id="invThumbnail" name="invThumbnail" placeholder="/phpmotors/images/no-image.png" <?php 
+            if(isset($invMake)){echo "value='$invThumbnail'";} ?>  required></label>
+
+          <label class="top">Price<input type="number" step=0.01 id="invPrice" name="invPrice"<?php 
+              if(isset($invMake)){echo "value='$invPrice'";} ?>  required></label>
+
+          <label class="top"># In Stock<input type="number" id="invStock" name="invStock"<?php 
+              if(isset($invMake)){echo "value='$invStock'";} ?> required></label>
+
+          <label class="top">Color<input type="text" id="invColor" name="invColor" <?php 
+              if(isset($invMake)){echo "value='$invColor'";} ?> required></label>
+
           <input type="submit" name="submit" value="Add vehicle" class="sign-button">
           <input type="hidden" name="action" value="add-vehicle-page">
         </form>

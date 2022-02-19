@@ -4,30 +4,25 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 //Get the accounts model
 require_once '../model/vehicles-model.php';
-
+require_once '../library/functions.php';
 
 $classifications = getClassifications();
 
 /*var_dump($classifications);
 	exit;*/
 
-$navList = '<ul class="nav">';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
-  $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
+$navList = navList($classifications);
+
 /*echo $navList;
   exit;*/
 
-$classificationList = '<select name="classificationId">';
-$classificationList .= '<option value="0" selected>Choose Car Classification</option>';
+// $classificationList = '<select name="classificationId" required>';
+// $classificationList .= '<option value="" selected>Choose Car Classification</option>';
 
-
-foreach ($classifications as $classification) {
-  $classificationList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>";
-}
-$classificationList .= '</select>';
+// foreach ($classifications as $classification) {
+//   $classificationList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>";
+// }
+// $classificationList .= '</select>';
 
 
 $action = filter_input(INPUT_POST, 'action');
@@ -48,14 +43,15 @@ switch ($action) {
 
   case 'add-classification-page':
     // Filter and store the data
-    $classificationName = filter_input(INPUT_POST, 'classificationName');
+    $classificationName = trim(filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_STRING));
 
     // Check for missing data
-    if (empty($classificationName)) {
+    if(empty($classificationName) || strlen($classificationName) > 30){
       $message = '<p class="warningMessage">Please provide information for all empty form fields.</p>';
       include '../view/add-classification.php';
-      exit;
-    }
+      exit; 
+  }
+
 
     // Send the data to the model
     $carOutcome = addClassificationName($classificationName);
@@ -73,21 +69,22 @@ switch ($action) {
     break;
   case 'add-vehicle-page':
     // Filter and store the data
-    $invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING);
-    $invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING);
-    $invDescription = filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_STRING);
-    $invImage = filter_input(INPUT_POST, 'invImage', FILTER_SANITIZE_STRING);
-    $invThumbnail = filter_input(INPUT_POST, 'invThumbnail', FILTER_SANITIZE_STRING);
-    $invPrice = filter_input(INPUT_POST, 'invPrice', FILTER_VALIDATE_INT);
-    $invStock = filter_input(INPUT_POST, 'invStock', FILTER_VALIDATE_INT);
-    $invColor = filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_STRING);
-    $classificationId = filter_input(INPUT_POST, 'classificationId');
+    $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING));
+    $invModel = trim(filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING));
+    $invDescription = trim(filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_STRING));
+    $invImage = trim(filter_input(INPUT_POST, 'invImage', FILTER_SANITIZE_STRING));
+    $invThumbnail = trim(filter_input(INPUT_POST, 'invThumbnail', FILTER_SANITIZE_STRING));
+    $invPrice = trim(filter_input(INPUT_POST, 'invPrice', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION));
+    $invStock = trim(filter_input(INPUT_POST, 'invStock', FILTER_SANITIZE_NUMBER_INT));
+    $invColor = trim(filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_STRING));
+    $classificationId = trim(filter_input(INPUT_POST, 'classificationId'));
 
 
 
     // Check for missing data
     if ($classificationId == 0) {       
       $message = '<p class="warningMessage">Please provide correct information for all empty form fields.</p>';
+      //if(isset($classification)){echo "value='$classificationId'";}
       include '../view/add-vehicle.php';
       exit;
     } 
