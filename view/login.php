@@ -31,12 +31,12 @@
     <main>
       <h1 class="sign-title">Sign in</h1>
       <?php
-      if (isset($message)) {
-        echo $message;
-      }
+        if (isset($_SESSION['message'])) {
+          echo $_SESSION['message'];
+        }
       ?>
       <div id="login-form">
-      <form  class="login">
+      <form  class="login" method="POST" action="/phpmotors/accounts/">
         <label class="top">Email: <input type="email" name="email" placeholder="email@gmail.com"  autofocus <?php
               if(isset($clientEmail)){
                 echo "value='$clientEmail'";

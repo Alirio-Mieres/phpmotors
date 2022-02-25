@@ -6,6 +6,9 @@ require_once '../model/main-model.php';
 require_once '../model/vehicles-model.php';
 require_once '../library/functions.php';
 
+//Create or access a Session
+session_start();
+
 $classifications = getClassifications();
 
 /*var_dump($classifications);
