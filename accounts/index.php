@@ -72,7 +72,7 @@ switch ($action) {
 
     if ($regOutcome === 1) {
       setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
-      $_SESSION['message'] = "Thanks for registering $clientFirstname. Please use your email and password to login.";
+      $_SESSION['message'] = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
       header('Location: /phpmotors/accounts/?action=login');
       exit;
     } else {
@@ -84,17 +84,18 @@ switch ($action) {
     break;
 
     case 'Login':
-      $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
-      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING));
-
+      $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
       $clientEmail = checkEmail($clientEmail);
-      $checkPassword = checkPassword($clientPassword);
-
-      if (empty($clientEmail) || empty($checkPassword)){
-        $message = '<p class="registration-error">Please provide information for all empty form fields.</p>';
-        include '../view/login.php';
-        exit;
-
+      $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+      $passwordCheck = checkPassword($clientPassword);
+      
+      // Run basic checks, return if errors
+      if (empty($clientEmail) || empty($passwordCheck)) {
+       $message = '<p class="notice">Please provide a valid email address and password.</p>';
+       include '../view/login.php';
+       exit;
+      }
+        
       // A valid password exists, proceed with the login process
       // Query the client data based on the email address
       $clientData = getClient($clientEmail);
@@ -119,10 +120,22 @@ switch ($action) {
       // Send them to the admin view
       include '../view/admin.php';
       exit;
-      }
+      break;
+
+    case 'Logout':
+      unset($_SESSION['clientData']);
+      unset($_SESSION['loggedin']);
+      unset($_SESSION['message']);
+      session_destroy();
+      header('Location: /phpmotors/');
+      exit;
       break;
 
   default:
-
+    if(!$_SESSION['loggedin'] || !isset($_SESSION['clientData'])){
+      include '../view/login.php';
+    } else{
+      include '../view/admin.php';
+    }
     break;
 }

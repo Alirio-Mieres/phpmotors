@@ -60,4 +60,3 @@ function getClient($clientEmail){
   $stmt->closeCursor();
   return $clientData;
  }
-?>

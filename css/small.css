@@ -5,8 +5,8 @@ body{
 
 #content{
   background-color: white;
-  border: 5px solid #4c96d7;
-  border-radius: 0.5rem;
+  /*border: 5px solid #4c96d7;
+  border-radius: 0.5rem;*/
 
 }
 h1{
@@ -244,8 +244,11 @@ header{
   padding: 1rem;
 }
 
-
 #login a{
+  text-decoration: none;
+  color: #8d8d8d;
+}
+#login{
   text-decoration: none;
   color: #8d8d8d;
   font-size: 1rem;
@@ -261,4 +264,20 @@ header{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.title-login{
+  text-align: center;
+}
+
+.detail > label{
+  display: block;
+}
+
+.detail li {
+  display: inline;
+}
+
+.own-button p, h3 {
+  margin-left: 0.5rem;
 }

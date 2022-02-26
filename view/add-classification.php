@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+      if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] < 2) {
+        header('Location: /phpmotors/');
+        exit;
+    }
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,7 +40,7 @@
         echo $message;
       }
       ?>
-      
+
       <div class="add-class">
         <form action="/phpmotors/vehicles/index.php" method="post">
           <label class="top">Classification Name: <input type="text" name="classificationName" id="classificationName" autofocus required pattern=".{0,30}" title="Limited to 30 characters" <?php
