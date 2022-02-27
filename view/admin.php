@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template Page</title>
+  <title>Admin Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="../css/small.css">
   <link rel="stylesheet" href="../css/medium.css">
@@ -31,21 +31,22 @@
        echo $navList;
       ?>
     </nav>
-
+    
   <main>
-    <div id="content">
+    
     <h1><? echo $_SESSION['clientData']['clientFirstname'] . ' ' . $_SESSION['clientData']['clientLastname']; ?></h1>
     <h3>Your are logged in.</h3>
     <ul class="detail">
-      <label >First Name: <li><? echo $_SESSION['clientData']['clientFirstname']; ?></li></label>
-      <label >Last Name: <li><? echo $_SESSION['clientData']['clientLastname']; ?></li></label>
-      <label >Email: <li><? echo $_SESSION['clientData']['clientEmail']; ?></li></label>
+      <li><label>First Name: </label><? echo $_SESSION['clientData']['clientFirstname']; ?></li>
+      <li><label>Last Name: </label><? echo $_SESSION['clientData']['clientLastname']; ?></li>
+      <li><label>Email: </label><? echo $_SESSION['clientData']['clientEmail']; ?></li>
     </ul>
+
     <? if($_SESSION['clientData']['clientLevel'] > 1){ ?>
           <h2>Vehicles Management</h2>
           <p class="alt-form">Add classifications, add vehicles, or update vehicles: <a class="alt-form-link" href="/phpmotors/vehicles/" title="Vehicle and car classification management">Manage Vehicles</a></p>
         <? } ?>
-        </div>
+     
   </main>
 
 

@@ -5,8 +5,8 @@ body{
 
 #content{
   background-color: white;
-  /*border: 5px solid #4c96d7;
-  border-radius: 0.5rem;*/
+  border: 5px solid #4c96d7;
+  border-radius: 0.5rem;
 
 }
 h1{
@@ -274,8 +274,8 @@ header{
   display: block;
 }
 
-.detail li {
-  display: inline;
+.detail li label{
+  font-weight: bolder
 }
 
 .own-button p, h3 {
