@@ -3,6 +3,10 @@
     header('Location: /phpmotors/');
     exit;
     }
+
+  if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    }  
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +43,23 @@
         <li><a href="/phpmotors/vehicles?action=add-classification">Add Classification</a></li>
         <li><a href="/phpmotors/vehicles?action=add-vehicle">Add Vehicle</a></li>
       </ul>
+
+      <?php
+if (isset($message)) { 
+ echo $message; 
+} 
+if (isset($classificationList)) { 
+ echo '<h2>Vehicles By Classification</h2>'; 
+ echo '<p>Choose a classification to see those vehicles</p>'; 
+ echo $classificationList; 
+}
+?>
+    <noscript>
+      <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
+    </noscript>
+
+    <table id="inventoryDisplay"></table>
+
     </main>
 
 
@@ -46,6 +67,7 @@
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
     </footer>
   </div>
+  <script src="../js/inventory.js"></script>
 </body>
-
 </html>
+<?php unset($_SESSION['message']); ?>
