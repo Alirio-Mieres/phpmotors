@@ -201,8 +201,6 @@ case 'getInventoryItems':
   }
   break;
 
-    
-
   default:
     $classificationList = buildClassificationList($classifications);
 

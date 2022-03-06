@@ -3,6 +3,10 @@
       header('Location: /phpmotors/');
       exit; 
     }
+      if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    }  
+?>
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,18 +37,32 @@
     </nav>
     
   <main>
-    
+ 
     <h1><? echo $_SESSION['clientData']['clientFirstname'] . ' ' . $_SESSION['clientData']['clientLastname']; ?></h1>
     <h3>Your are logged in.</h3>
+    <?php
+      if (isset($message)) { 
+      echo $message; 
+      }
+    ?>
+
     <ul class="detail">
       <li><label>First Name: </label><? echo $_SESSION['clientData']['clientFirstname']; ?></li>
       <li><label>Last Name: </label><? echo $_SESSION['clientData']['clientLastname']; ?></li>
       <li><label>Email: </label><? echo $_SESSION['clientData']['clientEmail']; ?></li>
     </ul>
 
+    <section class="update-account">
+    <h3>Account Manager</h3>
+    <p>Use this link to update account information</p>
+    <a href="/phpmotors/accounts?action=client">Update Account Information</a>
+    </section>
     <? if($_SESSION['clientData']['clientLevel'] > 1){ ?>
-          <h2>Vehicles Management</h2>
-          <p class="alt-form">Add classifications, add vehicles, or update vehicles: <a class="alt-form-link" href="/phpmotors/vehicles/" title="Vehicle and car classification management">Manage Vehicles</a></p>
+      <section>
+          <h2>Inventory Management</h2>
+          <p>Use this link to manage the inventory.</p>
+          <a class="alt-form-link" href="/phpmotors/vehicles/" title="Vehicle and car classification management">Vehicle Management</a>
+          </section>
         <? } ?>
      
   </main>

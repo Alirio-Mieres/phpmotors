@@ -45,9 +45,9 @@
       </ul>
 
       <?php
-if (isset($message)) { 
- echo $message; 
-} 
+      if (isset($message)) { 
+      echo $message; 
+      } 
 if (isset($classificationList)) { 
  echo '<h2>Vehicles By Classification</h2>'; 
  echo '<p>Choose a classification to see those vehicles</p>'; 
