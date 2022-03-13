@@ -37,7 +37,7 @@
       <div class="banner-box">
 
         <div class="delorean-img">
-          <img src="../phpmotors/images/delorean.jpg" alt="Delorean car images">
+          <img src="../phpmotors/images/vehicles/delorean.jpg" alt="Delorean car images">
         </div>
 
         <section class="own-button">

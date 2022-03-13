@@ -6,10 +6,14 @@
     font-size: 2rem;
   }
   
-  ul li a{
+  /*ul li a{*/
+    /*padding: 1rem 0.5rem;
+    margin: 1rem;*/
+ 
+   /* ul li{
     padding: 1rem 0.5rem;
-    margin: 1rem;
-  }
+    margin: 1rem
+  } */
   main{
     padding: 2rem;
   }
@@ -55,7 +59,50 @@
   .image-up{
     max-width: 25%;
   }
+/* For vehicle display in classification view */
+#inv-display {
+  justify-content: space-around;
+  flex-direction: row;
+}
 
+#inv-display h2{
+  font-size: 1rem;
+}
+
+#inv-display li {
+  max-width: 200px;
+  flex: 1 0 auto;
+  text-align: center;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+    
+#inv-display div {
+  width: 100%;
+}
   
+.infoCar{
+  border-top: 2px solid rgb(39, 35, 35);
+  height: 100px;
+}
+
+.car-list{
+  border-radius: 2px;
+}
+
+.car-details{
+  display: flex;
+  flex-direction: row;
+}
+
+.car-info-container{
+  padding: 2em 4.5em;
+}
+.car-name{
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
 
 }
