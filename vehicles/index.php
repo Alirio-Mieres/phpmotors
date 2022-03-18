@@ -221,6 +221,8 @@ switch ($action) {
       include '../view/classification.php';
       break;
 
+
+      
   case 'details':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $vehicle = getInvItemInfo($invId);
@@ -233,6 +235,7 @@ switch ($action) {
         include '../view/vehicle-details.php';
         exit;
         break;
+
   default:
     $classificationList = buildClassificationList($classifications);
 
