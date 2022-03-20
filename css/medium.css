@@ -95,14 +95,29 @@
 .car-details{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
-.car-info-container{
+/* .car-info-container{
   padding: 2em 4.5em;
-}
+} */
 .car-name{
   margin-bottom: 1em;
   font-size: 1.5em;
 }
+
+.img-small{
+  order: -1;
+  flex-direction: column;
+}
+
+.img-small img:hover{
+  transform: scale(3);
+}
+
+.car-image-detail{
+  max-width: 500px;
+}
+
 
 }

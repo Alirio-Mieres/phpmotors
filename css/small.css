@@ -211,7 +211,7 @@ form label.top input{
   background-color:  rgba(0,0,0,0.1);
 }
 button, input, optgroup, select, textarea {
-  width: 100% !important;
+  width: 100% ;
   display: block;
   max-width: 18rem;
   padding:  .7rem;
@@ -334,7 +334,7 @@ header{
 } */
 
 
-.car-image{
+.car-image-detail{
   max-width: 100%;
 }
 
@@ -343,9 +343,48 @@ header{
 }
 
 .car-info-container{
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .car-image-container{
   font-weight: bold;
+  width: 100%;
+}
+
+
+.img-small {
+    width: 50%;
+    display: flex;
+    padding: 1em;
+    flex-direction: row;
+    max-width: 100%;
+}
+
+.thumbnail{
+  max-width: 100%;
+}
+
+.background-detail{
+  background-color: rgb(216, 214, 214, 0.2);
+  padding: 0.5rem;
+}
+
+h2.sign-title{
+  margin-top: 1.5em;
+}
+
+fieldset {
+  border: none;
+}
+/* fieldset label{
+  display: block;
+} */
+
+.pImage{
+  display: inline !important;
+  width: 10%;
+}
+
+.upload-image{
+  max-width: 100%;
 }

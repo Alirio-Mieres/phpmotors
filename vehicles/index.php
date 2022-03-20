@@ -2,6 +2,7 @@
 //This is the acounts controller
 require_once '../library/connections.php';
 require_once '../model/main-model.php';
+require_once '../model/uploads-model.php';
 //Get the accounts model
 require_once '../model/vehicles-model.php';
 require_once '../library/functions.php';
@@ -226,10 +227,11 @@ switch ($action) {
   case 'details':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $vehicle = getInvItemInfo($invId);
+        $thumbnails = getSecondaryThumbnails($invId);
         if (!count($vehicle)) {
             $message = "<p class='errorMsg'>Sorry, no details for that vehicle could be found.</p>";
         } else {
-            $vehicleDisplay = buildVehicleDetailDisplay($vehicle);
+            $vehicleDisplay = buildVehicleDetailDisplay($vehicle, $thumbnails);
         }
 
         include '../view/vehicle-details.php';

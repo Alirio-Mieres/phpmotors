@@ -1,6 +1,6 @@
 <?php
-/* 
-Vehicles model 
+/*
+Vehicles model
 */
 
 //Add a classification name
@@ -52,16 +52,16 @@ function addVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbna
   return $rowsChanged;
 }
 
-// Get vehicles by classificationId 
-function getInventoryByClassification($classificationId){ 
-  $db = phpmotorsConnect(); 
-  $sql = ' SELECT * FROM inventory WHERE classificationId = :classificationId'; 
-  $stmt = $db->prepare($sql); 
-  $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_INT); 
-  $stmt->execute(); 
-  $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-  $stmt->closeCursor(); 
-  return $inventory; 
+// Get vehicles by classificationId
+function getInventoryByClassification($classificationId){
+  $db = phpmotorsConnect();
+  $sql = ' SELECT * FROM inventory WHERE classificationId = :classificationId';
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_INT);
+  $stmt->execute();
+  $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $inventory;
  }
 
  // Get vehicle information by invId
@@ -108,17 +108,18 @@ function deleteVehicle($invId) {
   return $rowsChanged;
  }
 
- //function will get a list of vehicles based on the classification.
- function getVehiclesByClassification($classificationName){
+
+function getVehiclesByClassification($classificationName) {
   $db = phpmotorsConnect();
-  $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+  $sql = "SELECT * FROM inventory JOIN images ON inventory.invId = images.invId WHERE images.imgPrimary = 1 AND images.imgName LIKE '%-tn.%' AND inventory.classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)";
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
   $stmt->execute();
   $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
   return $vehicles;
- }
+}
+
  // Get information for all vehicles
 function getVehicles(){
 	$db = phpmotorsConnect();

@@ -60,19 +60,27 @@ function buildClassificationList($classifications){
 }
 
 
-function buildVehicleDetailDisplay($vehicle) {
+function buildVehicleDetailDisplay($vehicle, $thumbnail) {
+
   // Main Image
   $dv = '<div class="car-image-container">';
-  $dv .= "<img class='car-image' src='$vehicle[invImage]' alt='$vehicle[invMake] $vehicle[invModel]'>";
-  $dv .= '<p>Price: $' . number_format($vehicle['invPrice'], 2) . '</p>';
+  $dv .= "<img class='car-image-detail' src='$vehicle[invImage]' alt='$vehicle[invMake] $vehicle[invModel]'>";
   $dv .= '</div>';
+
   //Description
   $dv .= '<div class="car-info-container">';
-  $dv .= "<strong class='car-name'>$vehicle[invMake] $vehicle[invModel] Details</strong>";
+  $dv .= '<p class="background-detail">Price: $' . number_format($vehicle['invPrice'], 2) . '</p>';
   $dv .= "<p>$vehicle[invDescription]</p>";
-  $dv .= "<p>Color:  $vehicle[invColor]</p>";
+  $dv .= "<p class='background-detail'>Color:  $vehicle[invColor]</p>";
   $dv .= "<p># In stock: $vehicle[invStock]</p>";
   $dv .= '</div>';
+
+  $dv .= '<div class="img-small">';
+  foreach($thumbnail as $k=>$v){
+    $dv .= "<img class='thumbnail' src='$v[imgPath]' alt='Image of $v[imgName]'>";
+  }
+  $dv .= '  </div>';
+
   return $dv;
 }
 

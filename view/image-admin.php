@@ -34,29 +34,30 @@ if (isset($_SESSION['message'])) {
     </nav>
 
     <main>
-      <h1>Image Management</h1>
-      <p>Choose one of the options below:</p>
-      <h2>Add New Vehicle Image</h2>
+      <h1 class="sign-title">Image Management</h1>
+      <p class="sign-title">Choose one of the options below:</p>
+      <h2 class="sign-title">Add New Vehicle Image</h2>
       <?php
       if (isset($message)) {
         echo $message;
       } ?>
-
-      <form action="/phpmotors/uploads/" method="post" enctype="multipart/form-data">
+    <div id="login-form">
+      <form action="/phpmotors/uploads/" method="post" enctype="multipart/form-data" class="login">
         <label for="invItem">Vehicle</label>
         <?php echo $prodSelect; ?>
         <fieldset>
-          <label>Is this the main image for the vehicle?</label>
-          <label for="priYes" class="pImage">Yes</label>
-          <input type="radio" name="imgPrimary" id="priYes" class="pImage" value="1">
-          <label for="priNo" class="pImage">No</label>
-          <input type="radio" name="imgPrimary" id="priNo" class="pImage" checked value="0">
+          <p>Is this the main image for the vehicle?</p>
+          <label for="priYes" class="pImage">Yes <input type="radio" name="imgPrimary" id="priYes" class="pImage" value="1"></label>
+          
+          <label for="priNo" class="pImage">No <input type="radio" name="imgPrimary" id="priNo" class="pImage" checked value="0"></label>
+          
         </fieldset>
         <label>Upload Image:</label>
-        <input type="file" name="file1">
-        <input type="submit" class="regbtn" value="Upload">
+        <input type="file" name="file1" class="upload-image">
+        <input type="submit" class="sign-button" value="Upload">
         <input type="hidden" name="action" value="upload">
       </form>
+     </div>
       <hr>
       <h2>Existing Images</h2>
       <p class="notice">If deleting an image, delete the thumbnail too and vice versa.</p>
