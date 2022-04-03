@@ -44,9 +44,10 @@
             <div id="login-form">
                 <? if(isset($message)){echo $message;} ?>
                 <form class="login" method="post" action="/phpmotors/reviews/" name="updateReview">
-                            <label  class="top">Review <textarea rows="4" cols="40" name="reviewText"  required><?
-                                if(isset($review['reviewText'])){echo $review['reviewText'];}
-                            ?></textarea></label>
+                            
+                <label  class="top">Review <textarea rows="4" cols="40" name="reviewText"  required><?
+                    if(isset($review['reviewText'])){echo $review['reviewText'];}
+                  ?></textarea></label>
                             
      
                             <input class="sign-button" name="editVehicleSubmit" type="submit" value="Edit Review">

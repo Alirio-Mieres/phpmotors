@@ -85,6 +85,7 @@ switch ($action) {
       // Store message to session
       $_SESSION['message'] = $message;
       // Redirect to client admin page
+      
       header("location: /phpmotors/accounts/");
       break;
   case 'remove':
