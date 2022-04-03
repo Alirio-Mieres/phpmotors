@@ -64,7 +64,27 @@
           <a class="alt-form-link" href="/phpmotors/vehicles/" title="Vehicle and car classification management">Vehicle Management</a>
           </section>
         <? } ?>
-     
+
+        <? if(isset($reviewsDisplay) && count($reviews)) { ?>
+                <hr>
+                <section class="table-container">
+                <h2>My Reviews</h2>
+                <table id="clientReviews">
+                    <thead>
+                        <tr>
+                            <th>Make/Model</th>
+                            <th>Review</th> 
+                            <th>Modify</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <? echo $reviewsDisplay; ?>
+                    </tbody>
+                </table>
+              </section>
+                <? } ?>
+          
   </main>
 
 

@@ -28,6 +28,7 @@ html{
  
  #inv-display li img {
      max-width: 100%;
+     height: 120px;
  }
 
 
@@ -43,12 +44,15 @@ body{
   border-radius: 0.5rem;
 
 }
-h1{
+h1, h2{
   font-size: 1.5rem;
   margin-left: 0.5rem;
 }
 
-
+.alert{
+  color: red;
+  font-style: italic;
+}
 
 ul.nav{
   background-color: #3a3a3a;
@@ -105,8 +109,9 @@ footer{
 
 }
 .delorean-img img{
-  max-width: 100%;
+  width: 80%;
   margin-top: 1rem;
+  margin-left: 2em;
 }
 .button-own{
   display: block;
@@ -234,7 +239,7 @@ textarea{
     color: white;
     border-radius: 1rem;
     padding: .75rem 1rem;
-    margin: 0.8rem 0 2rem 6%;
+    margin: 0.8rem 0 2rem 2%;
     width: 96%;
     /*max-width: 20rem;*/
 }
@@ -387,4 +392,52 @@ fieldset {
 
 .upload-image{
   max-width: 100%;
+}
+
+span.alert{
+  text-align: center;
+}
+
+.car-reviews{
+  background-color: #247BA0;
+  padding: 2rem;
+}
+
+.review{
+  background-color:antiquewhite;
+  margin-top: 1em;
+  list-style: none;
+  padding: 1rem;
+  border-radius: 3px ;
+}
+
+.log-info{
+  font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+#delete-container{
+  border: 2px solid #3a3a3a;
+  margin-top: 1em;
+  padding: 1.5em;
+}
+
+.text-delete{
+  display: block;
+  padding: 1.5rem;
+  background-color: #8ec6df;
+  font-size: 1.2rem;
+}
+
+.delete-button{
+  border: none;
+  background-color: #247BA0;
+  color: white;
+  border-radius: 1rem;
+  padding: .75rem 1rem;
+  margin: 0.8rem 0 2rem 6%;
+}
+
+.table-container{
+  padding: 1em;
 }

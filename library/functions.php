@@ -59,9 +59,7 @@ function buildClassificationList($classifications){
   return $dv;
 }
 
-
-function buildVehicleDetailDisplay($vehicle, $thumbnail) {
-
+  function buildVehicleDetailDisplay($vehicle, $thumbnail) {
   // Main Image
   $dv = '<div class="car-image-container">';
   $dv .= "<img class='car-image-detail' src='$vehicle[invImage]' alt='$vehicle[invMake] $vehicle[invModel]'>";
@@ -80,8 +78,52 @@ function buildVehicleDetailDisplay($vehicle, $thumbnail) {
     $dv .= "<img class='thumbnail' src='$v[imgPath]' alt='Image of $v[imgName]'>";
   }
   $dv .= '  </div>';
-
   return $dv;
+}
+
+function buildReviewDetail($vehicle, $reviews) {
+// Reviews
+$dv = '<div class="car-reviews-container">';
+$dv .= '<h2>Customer Review </h2>';
+if (isset($_SESSION['message'])) {
+    $dv .= $_SESSION['message'];
+    unset($_SESSION['message']);
+}
+if ($_SESSION['loggedin']) {
+    // Review Form
+    $dv .= '<div id="login-form">';
+    $dv .= '<form class="login" method="post" action="/phpmotors/reviews/" name="review">';
+    $dv .= '<label class="top">Screen Name <input type="text" value="'. substr($_SESSION['clientData']['clientFirstname'],0, 1) . $_SESSION['clientData']['clientLastname'] .'" readonly></label>';
+    $dv .= '<label class="top">Leave a Review <textarea rows="2" cols="48" name="reviewText" id="reviewText" placeholder=" " required></textarea></label>';
+    $dv .= '<input class="sign-button" type="submit" value="Submit">';
+    $dv .= '<input type="hidden" name="action" value="review">';
+    $dv .= '<input type="hidden" name="clientId" value="' . $_SESSION['clientData']['clientId'] . '">';
+    $dv .= "<input type='hidden' name='invId' value='$vehicle[invId]'>";
+    $dv .= '</form>';
+    $dv .= '</div>';
+} else {
+    $dv .= '<p class="log-info"><a href="/phpmotors/accounts/?action=login">Login</a> to leave a review.</p>';
+}
+
+if ($reviews) {
+  $dv .= "<h3>Review the $vehicle[invMake] $vehicle[invModel]</h3>";
+  $dv .= '<ul class="car-reviews">';
+    foreach ($reviews as $review) {
+        $date = date('d F, Y' , strtotime($review['reviewDate']));
+        $dv .= '<li class="review">';
+        $dv .= '<strong class="clientName">' . substr($review['clientFirstname'], 0, 1) . ". $review[clientLastname]</strong>";
+        $dv .= " wrote on $date";
+        $dv .= "<div class='reviewText'>$review[reviewText]</div>";
+        $dv .= '</li>';
+    }
+    $dv .= '</ul>';
+} 
+if(empty($reviews)){
+  $dv .= '<p class="log-info"><strong>Be the first to write a review</strong></p>';
+}
+
+$dv .= '</div>';
+return $dv;
 }
 
 /* * ********************************
@@ -241,4 +283,16 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
    imagedestroy($old_image);
  } // ends resizeImage function
 
+function buildClientReviewsDisplay($clientReviews) {
+  $dr = "";
+  foreach($clientReviews as $review) {
+      $date = date('d F, Y' , strtotime($review['reviewDate']));
+
+      $dr .= "<tr><td>$review[invMake] $review[invModel]</td>";
+      $dr .= "<td>(Reviewed on $date)</td>";
+      $dr .= "<td class='reviewLink'><a href='/phpmotors/reviews/?action=edit&reviewId=$review[reviewId]' title='Click to modify'>Edit</a> |</td>";
+      $dr .= "<td class='reviewLink'><a href='/phpmotors/reviews/?action=remove&reviewId=$review[reviewId]' title='Click to delete'>Delete</a></td>";
+  }
+  return $dr;
+}
 ?>

@@ -112,11 +112,15 @@
 }
 
 .img-small img:hover{
-  transform: scale(3);
+  transform: scale(1.5);
 }
 
 .car-image-detail{
   max-width: 500px;
+}
+
+.table-container{
+  padding: 0;
 }
 
 

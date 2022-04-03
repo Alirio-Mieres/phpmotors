@@ -6,23 +6,14 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 require_once '../library/functions.php';
 
+require_once '../model/reviews-model.php';
+
 //Create or access a Session
 session_start();
 
 $classifications = getClassifications();
 
-/*var_dump($classifications);
-	exit;*/
-
-// $navList = '<ul class="nav">';
-// $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-// foreach ($classifications as $classification) {
-//   $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-// }
-// $navList .= '</ul>';
 $navList = navList($classifications);
-/*echo $navList;
-  exit;*/
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -117,6 +108,8 @@ switch ($action) {
     array_pop($clientData);
     // Store the array into the session
     $_SESSION['clientData'] = $clientData;
+    $reviews = getClientReviews($_SESSION['clientData']['clientId']);
+    $reviewsDisplay = buildClientReviewsDisplay($reviews);
     // Send them to the admin view
     include '../view/admin.php';
     exit;
@@ -210,7 +203,10 @@ switch ($action) {
     // if (!$_SESSION['loggedin'] || !isset($_SESSION['clientData'])) {
     //   include '../view/login.php';
     // } else {
+      $reviews = getClientReviews($_SESSION['clientData']['clientId']);
+      $reviewsDisplay = buildClientReviewsDisplay($reviews);
       include '../view/admin.php';
     // }
+    exit;
      break;
 }

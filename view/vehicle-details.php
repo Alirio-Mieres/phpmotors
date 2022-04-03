@@ -36,6 +36,13 @@
                     echo $vehicleDisplay;
                 } ?>
             </div>
+            <hr>
+            
+            <div class="review-display">
+            <? if(isset($reviewDisplay)){
+                    echo $reviewDisplay;
+                }?>
+            </div>
   </div>
   </main>
 
